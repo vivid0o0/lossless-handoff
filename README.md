@@ -60,10 +60,20 @@ The workflow produces a structured handoff containing:
 
 The result should prioritize continuity and fidelity over brevity. It is not an ordinary summary: it should omit only filler and redundant acknowledgements, never information needed to resume the work accurately.
 
+## model response
+
+The agent produces:
+
+1. **A `.md` handoff file** — `session-handoff-YYYY-MM-DD.md` written to the current working directory, containing the full structured handoff. This is the canonical, complete handoff.
+
+2. **A copyable session start prompt in chat** — a short paragraph wrapped in a fenced code block, which the user pastes into a fresh session to start it. It points the next agent at the handoff file and instructs it to continue with zero loss of intent, state, or nuance.
+
+The chat prompt is short by design: the file holds the full handoff, and the prompt just launches the next session at the right starting point.
+
 ## Invocation
 
 1. Just start your message with `/lossless-handoff`.
 
 2. Just tell it to compact the session. It'll automatically use `lossless-handoff`.
 
-> The resulting handoff can then be pasted into a fresh session as its starting context.
+> The workflow writes the full handoff to `session-handoff-YYYY-MM-DD.md`, then posts a short copyable prompt in chat. Paste that prompt into a fresh session as its starting context.

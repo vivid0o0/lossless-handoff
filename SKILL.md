@@ -53,3 +53,34 @@ Always preserve, never paraphrase away:
 - Do not impose a word or length cap on any section; let each section be as long as it needs to be to stay complete
 - Do not weight older content less just because it's older; weight by relevance to continuing the work, not recency alone
 </compression-rules>
+
+<output-instructions>
+Produce two outputs:
+
+1. **Handoff file:** Write the full structured handoff to a Markdown file named `lossless-handoff_<session-title>_YYYY-MM-DD.md` saved in the current working directory and link it to the user in your response. This file is the complete, canonical handoff. Do not truncate, compress, or summarize any section in it.
+
+2. **Session start prompt (in chat response):** In the chat, give the user a copyable very short paragraph that the user can copy and paste into a fresh session along with the attached handoff. This prompt must:
+   - Be wrapped in a copyable code block (fenced code block) so the user can copy it with one click.
+   - Reference the handoff file by its exact filename.
+   - Briefly instruct the next agent to read the file and continue the work with zero loss of intent or state.
+   - Not contain the handoff content itself; the file is the source of truth.
+
+Example response shape (don't copy literally):
+
+---
+
+Sure thing!
+
+Here's your starting prompt:
+
+```text
+Read `lossless-handoff_how-to-center-a-div_YYYY-MM-DD.md` and continue all work
+from that handoff. Follow its corrections and learned preferences, complete all pending tasks, and pick up
+active/in-progress work exactly where it was left off. Do not repeat mistakes, learn from the handoff.
+```
+
+And you can find the handoff markdown file at `path/to/lossless-handoff_<session-title>_YYYY-MM-DD.md`
+
+---
+
+</output-instructions>
