@@ -16,7 +16,7 @@ description: Use this workflow for creating a lossless session handoff that allo
 Send this prompt to your local AI agent (opencode, hermes agent, claude code, etc.)
 
 ```txt
-Hey, please add `https://github.com/vivid0o0/lossless-handoff/blob/main/SKILL.md` to your skills directory.
+Hey, please add `https://raw.githubusercontent.com/vivid0o0/lossless-handoff/refs/heads/main/SKILL.md` to your skills directory.
 ```
 
 ## Use it when
